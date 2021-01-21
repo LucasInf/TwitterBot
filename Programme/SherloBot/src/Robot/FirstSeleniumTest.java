@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FirstSeleniumTest {
@@ -20,7 +21,12 @@ public class FirstSeleniumTest {
 
 		System.setProperty("webdriver.chrome.driver", chemin +"\\Driver\\chromedriver.exe");
 
-		driver = new ChromeDriver();
+
+		ChromeOptions options = new ChromeOptions(); 
+		options.addArguments("start-maximized");
+
+		driver = new ChromeDriver(options);
+		driver.manage().window().fullscreen();
 		driver.get("https://twitter.com/tmvli");
 
 
@@ -49,15 +55,15 @@ public class FirstSeleniumTest {
 		for (int i=0;i<test4.size();i++) {
 			obj.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			System.out.println(i + "-- " + test4.get(i).getText());
-			
+
 			/*
 			test4.get(i).click();			
 			System.out.println(obj.driver.getCurrentUrl());			
 			obj.driver.navigate().back();
-			*/
-			
+			 */
+
 			System.out.println("-----------------");
-			
+
 		}
 		/*
 		String test4=obj.driver.findElement(By.cssSelector("#react-root .css-1dbjc4n.r-1loqt21.r-18u37iz.r-1ny4l3l.r-1udh08x.r-1yt7n81.r-ry3cjt.r-o7ynqc.r-6416eg"+ "")).getText();
@@ -67,9 +73,9 @@ public class FirstSeleniumTest {
 		//retrouve et affiche la banniere
 		WebElement test5=obj.driver.findElement(By.tagName("img"));
 		System.out.println(test5.getAttribute("src"));
-		//obj.driver.get(test5.getAttribute("src"));
+		obj.driver.get(test5.getAttribute("src"));
 
-		
+
 
 	}
 
